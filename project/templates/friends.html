@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style type="text/css">
+   TABLE {
+    font-style: bold;
+    font-size: 18pt;
+   }
+   TD, TH {
+    padding-top: 10pt;
+    padding-bottom: 10pt;
+    padding-right: 30pt;
+   }
+   btn {
+    border: 2pt solid;
+    cursor: pointer;
+   }
+  </style>
+<p style="font-size: 28pt;">Friends</p>
+<br />
+<br />
+<table cellpadding="4" cellspacing="1">
+{% for friend_row in friends %}
+    <tr>
+      <td>{{ friend_row['name'] }}</td>
+      <td>
+          <form action="" method="post">
+              <input type="hidden" name="id" value="{{ friend_row['id'] }}">
+              <input class="btn" type="submit" name="remove" value="-" />
+          </form>
+      </td>
+    </tr>
+{% endfor %}
+</table>
+<br />
+<br />
+<p style="font-size: 28pt;">People you may know</p>
+<br />
+<br />
+<table cellpadding="4" cellspacing="1">
+{% for people_row in people %}
+    <tr>
+      <td>{{ people_row['name'] }}</td>
+      <td>
+          <form action="" method="post">
+              <input type="hidden" name="id" value="{{ people_row['id'] }}">
+              <input class="btn" type="submit" name="add" value="+" />
+          </form>
+      </td>
+    </tr>
+{% endfor %}
+</table>
+{% endblock %}
